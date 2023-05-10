@@ -18,4 +18,4 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-history:$TAG_NAME', './payment-history' ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'image', 'push', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-catalog:$TAG_NAME']
+  args: [ 'image', 'push', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-history:$TAG_NAME']
