@@ -1,15 +1,13 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/catalog:$TAG_NAME', './catalog' ]
-steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'image', 'push', 'gcr.io/yb-americas-presales/github.com/btjimerson/catalog:$TAG_NAME']
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/frontend:$TAG_NAME', './frontend' ]
-steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/orders:$TAG_NAME', './orders' ]
-steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/payments:$TAG_NAME', './payments' ]
-steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-history:$TAG_NAME', './payment-history' ]
