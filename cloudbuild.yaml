@@ -1,0 +1,16 @@
+steps:
+- name: maven:3.8.7-eclipse-temurin-19
+  entrypoint: mvn
+  args: ['clean', 'test', '-f', './catalog/']
+- name: maven:3.8.7-eclipse-temurin-19
+  entrypoint: mvn
+  args: ['clean', 'test', '-f', './frontend/']
+- name: maven:3.8.7-eclipse-temurin-19
+  entrypoint: mvn
+  args: ['clean', 'test', '-f', './orders/']
+- name: maven:3.8.7-eclipse-temurin-19
+  entrypoint: mvn
+  args: ['clean', 'test', '-f', './payment-history/']
+- name: maven:3.8.7-eclipse-temurin-19
+  entrypoint: mvn
+  args: ['clean', 'test', '-f', './payments/']
