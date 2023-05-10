@@ -15,4 +15,4 @@ steps:
   entrypoint: mvn
   args: ['clean', 'test', '-f', './payments/']
 options:
-  env: ['STRIPE_API_KEY=pk_test_51Hjqs3AWdvlSRNTQLglcfTf08dgs2zwg9wakXv59I8pu2wpKoM6PEvOrd2fAggxR7USrBxcwQjd1Bj4BXjfkQ9WX00K0f1dxXE']
+  env: ['STRIPE_API_KEY=sk_test_51Hjqs3AWdvlSRNTQmMxVBsFMK1nV09PEOpyVa2nMX3IX4RYe3bed3v2H7vqufHJvlSAEg17yzYB9liBOKBV3uEpq00xe7fzN4x']
