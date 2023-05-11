@@ -20,25 +20,28 @@ By default these microservices use an embedded H2 database in each microservice.
 - `YB_PASSWORD` - the password for the Yugabyte user
 
 And then set your Spring profile to `yugabyte`:
-```
+```bash
 export SPRING_PROFILES_ACTIVE=yugabyte
 ```
 ## How to run the projects
 
 ### Kubernetes
 
-These microservices can be run in Kubernetes. There is an example set of YAML files and scripts in the [deploy](./deploy) directory.
+These microservices can be run in Kubernetes. There is a Helm chart available to install the e-commerce demo. Instructions for using the Helm chart are available [here](https://btjimerson.github.io/btjimerson-charts/).
 
-The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, update the stripe-secret.yaml file in the deploy directory. Make sure you Base64 encode your key in the file (`echo 'my-key' | base64`). Alternatively, you can set the secret with `kubectl` like this: `kubectl create secret generic paymentbackend -n catalog-demo --from-literal=stripe-api-key=<your-stripe-api-key>`
+The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, override the `payments.stripeApiKey` value in the Helm chart. Make sure you Base64 encode your key in the value:
+```bash
+echo 'my-key' | base64`
+```
 
-How you deploy to Kubernetes depends on your environment and requirements. You will probably want a Gateway or Ingress for frontend to access the site. The [deploy](./deploy) directory has sample YAML files that you can use for deployment.
+You will also want an Istio Gateway or a Load Balancer service for frontend to access the site. The Helm chart has values that you can override (`frontendlb.enabled` and `frontendgw.enabled`) to control creation of these objects.
 
 ### Locally
 
 If you don't have a local Kubernetes cluster like kind or minikube, you can run the applications standalone. Here are the basic steps:
 
 - Install a local instance of RabbitMQ, and set an environment variable called `RABBITMQ_HOST` to something like `localhost`.
-- Add an environment variable `STRIPE_API_KEY` with your Stripe API key [payments](payments) project. This should be plain text, not encoded.
+- Add an environment variable `STRIPE_API_KEY` with your Stripe API key for the [payments](payments) project. This should be plain text, not encoded.
 - Start each project with Maven and a local Spring profile: `mvn clean package spring-boot:run -Dspring-boot.run.profiles=local`.
 
 ## Testing
