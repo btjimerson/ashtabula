@@ -19,3 +19,7 @@ steps:
   args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-history:$TAG_NAME', './payment-history' ]
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'image', 'push', 'gcr.io/yb-americas-presales/github.com/btjimerson/payment-history:$TAG_NAME']
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'gcr.io/yb-americas-presales/github.com/btjimerson/loadgenerator:$TAG_NAME', './loadgenerator' ]
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'image', 'push', 'gcr.io/yb-americas-presales/github.com/btjimerson/loadgenerator:$TAG_NAME']
