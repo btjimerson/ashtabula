@@ -1,5 +1,5 @@
 
-# ecommerce-demo
+# E-Commerce Demo
 
 This is an example application to demonstrate Microservice constructs, such as:
 
@@ -7,6 +7,8 @@ This is an example application to demonstrate Microservice constructs, such as:
 - RESTful clients and servers
 - Database per microservice design
 - Loose coupling through messaging
+
+![Architecture](images/catalog-demo-architecture.png)
 
 ## Databases
 There are microservices that use a database:
@@ -84,6 +86,3 @@ You can use the frontend project to test placing an order. For successful charge
 The [frontend](frontend) application exposes a number of API endpoints for automation\.The API documentation can be viewed [here](https://documenter.getpostman.com/view/1749839/UVyxQtit).
 
 
-## Architecture
-
-![Architecture](images/catalog-demo-architecture.png)
