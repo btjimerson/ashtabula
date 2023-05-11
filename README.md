@@ -24,7 +24,7 @@ These microservices can be run in Kubernetes. There is a Helm chart available to
 
 The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, override the `payments.stripeApiKey` value in the Helm chart. Make sure you Base64 encode your key in the value:
 ```bash
-echo 'my-key' | base64`
+echo 'my-key' | base64
 ```
 If you want to use the embedded H2 databases override the value `global.activeProfiles` and set it to something other than `yugabyte`. If you want to use a Yugabyte database, override the following values with the Yugabyte information:
  * `global.activeProfiles=yugabyte`
@@ -53,9 +53,10 @@ If you want to use a Yugabyte database instead of the embedded H2 databases, set
 - `YB_USER`- the username for Yugabyte
 - `YB_PASSWORD` - the password for the Yugabyte user
 
-And then set your Spring profile to `yugabyte`:
+And then add `yugabyte` to your Spring profiles:
+
 ```bash
-export SPRING_PROFILES_ACTIVE=yugabyte
+mvn clean package spring-boot:run -Dspring-boot.run.profiles=local,yugabyte
 ```
 
 ## Testing
