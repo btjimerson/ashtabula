@@ -14,15 +14,8 @@ There are microservices that use a database:
 - [orders](orders)
 - [payment-history](payment-history)
 
-By default these microservices use an embedded H2 database in each microservice. You can also configure these to use Yugabyte. To do so, set the following environment variables before starting:
-- `YB_URL` - the JDBC URL for Yugabyte
-- `YB_USER`- the username for Yugabyte
-- `YB_PASSWORD` - the password for the Yugabyte user
+By default these microservices use an embedded H2 database in each microservice. You can also configure these to use Yugabyte. See [How to run the projects](#how-to-run-the-projects) for instructions for each environment.
 
-And then set your Spring profile to `yugabyte`:
-```bash
-export SPRING_PROFILES_ACTIVE=yugabyte
-```
 ## How to run the projects
 
 ### Kubernetes
@@ -33,6 +26,17 @@ The orders project uses the Stripe API to process credit cards. You will need to
 ```bash
 echo 'my-key' | base64`
 ```
+If you want to use the embedded H2 databases override the value `global.activeProfiles` and set it to something other than `yugabyte`. If you want to use a Yugabyte database, override the following values with the Yugabyte information:
+ * `global.activeProfiles=yugabyte`
+ * `catalog.yugabyteUrl`
+ * `catalog.yugabyteUser`
+ * `catalog.yugabytePassword`
+ * `orders.yugabyteUrl`
+ * `orders.yugabyteUser`
+ * `orders.yugabytePassword`
+ * `paymentHistory.yugabyteUrl`
+ * `paymentHistory.yugabyteUser`
+ * `paymentHistory.yugabytePassword`
 
 You will also want an Istio Gateway or a Load Balancer service for frontend to access the site. The Helm chart has values that you can override (`frontendlb.enabled` and `frontendgw.enabled`) to control creation of these objects.
 
@@ -43,6 +47,16 @@ If you don't have a local Kubernetes cluster like kind or minikube, you can run 
 - Install a local instance of RabbitMQ, and set an environment variable called `RABBITMQ_HOST` to something like `localhost`.
 - Add an environment variable `STRIPE_API_KEY` with your Stripe API key for the [payments](payments) project. This should be plain text, not encoded.
 - Start each project with Maven and a local Spring profile: `mvn clean package spring-boot:run -Dspring-boot.run.profiles=local`.
+
+If you want to use a Yugabyte database instead of the embedded H2 databases, set the following environment variables before starting:
+- `YB_URL` - the JDBC URL for Yugabyte
+- `YB_USER`- the username for Yugabyte
+- `YB_PASSWORD` - the password for the Yugabyte user
+
+And then set your Spring profile to `yugabyte`:
+```bash
+export SPRING_PROFILES_ACTIVE=yugabyte
+```
 
 ## Testing
 
