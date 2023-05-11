@@ -31,7 +31,7 @@ These microservices can be run in Kubernetes. There is a Helm chart available to
 
 The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, override the `payments.stripeApiKey` value in the Helm chart. Make sure you Base64 encode your key in the value:
 ```bash
-echo 'my-key' | base64`
+echo 'my-key' | base64
 ```
 
 You will also want an Istio Gateway or a Load Balancer service for frontend to access the site. The Helm chart has values that you can override (`frontendlb.enabled` and `frontendgw.enabled`) to control creation of these objects.
