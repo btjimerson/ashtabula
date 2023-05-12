@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
-public class CatalogController {
+public class FrontendController {
 
-    private static final Log LOG = LogFactory.getLog(CatalogController.class);
+    private static final Log LOG = LogFactory.getLog(FrontendController.class);
 
     @Value("${endpoint.catalog}")
     private String catalogEndpoint;

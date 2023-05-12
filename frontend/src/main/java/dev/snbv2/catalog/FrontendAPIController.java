@@ -17,9 +17,9 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/api/v1")
-public class CatalogAPIController {
+public class FrontendAPIController {
 
-    private static final Log LOG = LogFactory.getLog(CatalogAPIController.class);
+    private static final Log LOG = LogFactory.getLog(FrontendAPIController.class);
 
     @Value("${endpoint.catalog}")
     private String catalogEndpoint;
