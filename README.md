@@ -8,7 +8,7 @@ This is an example application to demonstrate Microservice constructs, such as:
 - Database per microservice design
 - Loose coupling through messaging
 
-![Architecture](images/catalog-demo-architecture.png)
+![Architecture](images/ecommerce-demo-architecture.png)
 
 ## Databases
 There are microservices that use a database:
