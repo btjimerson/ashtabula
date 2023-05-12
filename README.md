@@ -22,13 +22,13 @@ By default these microservices use an embedded H2 database in each microservice.
 
 ### Kubernetes
 
-These microservices can be run in Kubernetes. There is a Helm chart available to install the e-commerce demo. Instructions for using the Helm chart are available [here](https://btjimerson.github.io/btjimerson-charts/).
+There is a Helm chart available to install the application. Instructions for using the Helm chart are available [here](https://btjimerson.github.io/btjimerson-charts/).
 
 The orders project uses the Stripe API to process credit cards. You will need to create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Once you have your Stripe API key, override the `payments.stripeApiKey` value in the Helm chart. Make sure you Base64 encode your key in the value:
 ```bash
 echo 'my-key' | base64
 ```
-If you want to use the embedded H2 databases override the value `global.activeProfiles` and set it to something other than `yugabyte`. If you want to use a Yugabyte database, override the following values with the Yugabyte information:
+If you want to use the embedded H2 databases override the value `global.activeProfiles` and set it to be blank (or something other than `yugabyte` or `local`). If you want to use a Yugabyte database, override the following values with the Yugabyte information:
  * `global.activeProfiles=yugabyte`
  * `catalog.yugabyteUrl`
  * `catalog.yugabyteUser`
@@ -40,14 +40,14 @@ If you want to use the embedded H2 databases override the value `global.activePr
  * `paymentHistory.yugabyteUser`
  * `paymentHistory.yugabytePassword`
 
-You will also want an Istio Gateway or a Load Balancer service for frontend to access the site. The Helm chart has values that you can override (`frontendlb.enabled` and `frontendgw.enabled`) to control creation of these objects.
+You will also want an Istio Gateway or a Load Balancer service to access the site and APIs (unless you plan on using Kubernetes port forwarding). The Helm chart has values that you can override (`frontendlb.enabled` and `frontendgw.enabled`) to control creation of these objects.
 
-### Locally
+### Local / VM
 
-If you don't have a local Kubernetes cluster like kind or minikube, you can run the applications standalone. Here are the basic steps:
+If you don't have a local Kubernetes cluster like kind or minikube, you can run the applications standalone on your local workstation or a virtual machine. Here are the basic steps:
 
-- Install a local instance of RabbitMQ, and set an environment variable called `RABBITMQ_HOST` to something like `localhost`.
-- Add an environment variable `STRIPE_API_KEY` with your Stripe API key for the [payments](payments) project. This should be plain text, not encoded.
+- Install an instance of RabbitMQ, and set an environment variable called `RABBITMQ_HOST` to something to the host name of the RabbitMQ server. This environment variable should be in the context of both the [`payments`](payments) project and the [`payment-history`](payment-history) project.
+- Create a free developer account at the [Stripe Developer Dashboard](https://dashboard.stripe.com/register). Add an environment variable called `STRIPE_API_KEY` with your Stripe API key for the [`payments`](payments) project. The environment variable should be plain text, not encoded.
 - Start each project with Maven and a local Spring profile: `mvn clean package spring-boot:run -Dspring-boot.run.profiles=local`.
 
 If you want to use a Yugabyte database instead of the embedded H2 databases, set the following environment variables before starting:
