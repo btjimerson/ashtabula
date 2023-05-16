@@ -1,5 +1,5 @@
 
-# E-Commerce Demo
+# Ashtabula E-commerce Demo Application
 
 This is an example application to demonstrate Microservice constructs, such as:
 
@@ -8,7 +8,11 @@ This is an example application to demonstrate Microservice constructs, such as:
 - Database per microservice design
 - Loose coupling through messaging
 
-![Architecture](images/ecommerce-demo-architecture.png)
+![Architecture](images/ashtabula-architecture.png)
+
+## Why the Name 'Ashtabula'?
+
+[Reportedly](https://www.businessinsider.com/amazon-jeff-bezos-chose-company-name-2018-5), Jeff Bezos named his company Amazon because the Amazon River is the largest river by far in the world, and hist company was going to be the largest bookstore in the world. This application isn't very big, so it's named after a 40 mile river in Northeast Ohio.
 
 ## Databases
 There are microservices that use a database:
