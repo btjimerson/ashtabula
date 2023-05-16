@@ -12,7 +12,7 @@ This is an example application to demonstrate Microservice constructs, such as:
 
 ## Why the Name 'Ashtabula'?
 
-[Reportedly](https://www.businessinsider.com/amazon-jeff-bezos-chose-company-name-2018-5), Jeff Bezos named his company Amazon because the Amazon River is the largest river by far in the world, and hist company was going to be the largest bookstore in the world. This application isn't very big, so it's named after the [Ashtabula River](https://en.wikipedia.org/wiki/Ashtabula_River), a 40 mile river in Northeast Ohio.
+[Reportedly](https://www.businessinsider.com/amazon-jeff-bezos-chose-company-name-2018-5), Jeff Bezos named his company Amazon because the Amazon River is the largest river in the world, and his company was going to be the largest bookstore in the world. This application isn't very big, so it's named after the [Ashtabula River](https://en.wikipedia.org/wiki/Ashtabula_River), a 40 mile long river in Northeast Ohio.
 
 ## Databases
 There are microservices that use a database:
