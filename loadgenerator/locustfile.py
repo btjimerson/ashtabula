@@ -35,10 +35,10 @@ def checkout(l):
             {
                 "id": 1,
                 "name": "Turtle Beach Recon 200 Headset",
-                "imageSource": null,
+                "imageSource": None,
                 "description": "Powerful amplified audio: Immerse yourself in your games with rechargeable, battery powered amplified sound from your Xbox and PlayStation",
                 "amount": 49.95,
-                "inStock": true
+                "inStock": True
             }
         ],
         "billingAddress": {
@@ -46,7 +46,7 @@ def checkout(l):
             "lastName": "Struthers",
             "email": "sstruthers@example.com",
             "address": "1234 Main St",
-            "address2": null,
+            "address2": None,
             "city": "Des Moines",
             "state": "IA",
             "zipCode": "50047"
